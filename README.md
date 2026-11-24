@@ -1,5 +1,8 @@
 # I.A 2 — Proyectos de Inteligencia Artificial
 
+> **Estado de la entrega:** README, BITACORA y script de subida publicados. Los directorios `CocinaClara/`, `RiwiMate/` y el ZIP en `entregables/` todavía deben incorporarse desde el paquete de entrega; no están publicados en GitHub. Se incluyen en el ZIP preparado para el equipo.
+
+
 Repositorio de actividades de Inteligencia Artificial en RIWI.
 
 ## Célula
