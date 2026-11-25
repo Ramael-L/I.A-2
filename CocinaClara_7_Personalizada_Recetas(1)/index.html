@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f9f7f0">
+  <title>Cocina Clara | Recetas y asistente</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+<header class="encabezado">
+  <div class="contenedor barra">
+    <a class="marca" href="#inicio">🍃 Cocina <strong>Clara</strong></a>
+    <nav aria-label="Navegación principal"><a href="#recetas">Recetas</a><a href="#asistente">Asistente</a><a href="#privacidad">Privacidad</a></nav><button class="boton boton-secundario" id="abrir-cuenta" type="button">Mi cuenta</button>
+    <button type="button" id="cambiar-tema" class="boton tema" aria-label="Activar modo oscuro" aria-pressed="false">🌙 Oscuro</button>
+  </div>
+</header>
+<main class="contenedor" id="inicio">
+  <section class="introduccion">
+    <div><p class="subtitulo">COCINA CASERA, SIN COMPLICACIONES</p><h1>Algo rico empieza <span>aquí.</span></h1><p>Encuentra recetas fáciles, sigue sus pasos y usa un asistente que reconoce cuándo no tiene una respuesta.</p><a class="boton boton-principal enlace-boton" href="#recetas">Explorar recetas ↓</a></div>
+    <div class="hero-arte" aria-hidden="true"><span>🍅</span><span>🥑</span><span>🍋</span><div>🍲</div></div>
+  </section>
+
+  <section id="recetas" class="seccion-recetas" aria-labelledby="titulo-recetas">
+    <div class="titulo-seccion"><div><p class="subtitulo">IDEAS PARA HOY</p><h2 id="titulo-recetas">Un mundo de recetas para ti</h2><p class="texto-suave">Explora cientos de preparaciones reales, cada una con su fotografía, ingredientes, pasos y fuente. Tu perfil puede ordenar y filtrar las recomendaciones.</p></div><span class="pildora">Con fotos y fuentes</span><span id="cantidad-recetas" class="oculto"></span></div>
+    <label class="etiqueta-campo" for="buscar-receta">Buscar por nombre o ingrediente</label>
+    <div class="fila-busqueda"><input type="search" id="buscar-receta" placeholder="Prueba: tengo tomate y pasta, algo rápido para desayunar..." autocomplete="off"><button type="button" class="boton boton-secundario" id="limpiar-busqueda">Limpiar</button></div>
+    <div class="ideas-busqueda"><span>Prueba con:</span><button class="busqueda-sugerida" data-busqueda="tengo arroz" type="button">🍚 Tengo arroz</button><button class="busqueda-sugerida" data-busqueda="algo rápido para desayunar" type="button">⚡ Desayuno rápido</button><button class="busqueda-sugerida" data-busqueda="tomate y pepino" type="button">🥒 Tomate y pepino</button></div>
+    <div class="herramientas-busqueda"><p id="texto-busqueda" class="texto-suave" aria-live="polite"></p><div><label for="ordenar-recetas">Ordenar por</label><select id="ordenar-recetas"><option value="relevancia">Más relevantes</option><option value="rapidas">Menos tiempo</option><option value="nombre">Nombre A–Z</option></select><button type="button" class="boton boton-secundario" id="solo-favoritos" aria-pressed="false">♡ Guardadas</button></div></div>
+    <div class="filtros" role="group" aria-label="Filtrar recetas por categoría">
+      <button type="button" class="filtro activo" data-categoria="todas" aria-pressed="true">Todas</button>
+      <button type="button" class="filtro" data-categoria="almuerzo" aria-pressed="false">🍚 Almuerzos</button>
+      <button type="button" class="filtro" data-categoria="desayuno" aria-pressed="false">🍳 Desayunos</button>
+      <button type="button" class="filtro" data-categoria="ligero" aria-pressed="false">🥗 Ligeras</button>
+    </div>
+    <div class="busqueda-externa tarjeta-inline">
+      <div><strong>🌍 Descubre las recetas reales</strong><p class="texto-suave">Al autorizar el servicio, consulta todo el catálogo externo automáticamente. Sin fotografías genéricas ni fuentes inventadas.</p></div>
+      <div class="consentimiento-explorar"><label for="permiso-catalogo-rapido"><input id="permiso-catalogo-rapido" type="checkbox"><span>Autorizo consultar TheMealDB y cargar fotografías externas. <a href="privacidad.html" target="_blank" rel="noopener">Ver privacidad</a>.</span></label><button class="boton boton-principal" id="buscar-online" type="button">Explorar recetas →</button></div>
+    </div>
+    <p id="estado-api-recetas" class="texto-suave" role="status"></p>
+    <div id="recetas-externas" class="oculto"><h3>📸 Recetas con fotografías y fuentes <small>· Catálogo TheMealDB · Algunas instrucciones están en inglés</small></h3><p class="texto-suave" id="cuenta-externas" aria-live="polite"></p><p class="alerta-alergenos" id="aviso-alergias" role="note">⚠️ Los filtros son orientativos. No garantizan ausencia de trazas ni contaminación cruzada. Consulta los ingredientes originales.</p><div class="rejilla-recetas" id="lista-recetas-externas"></div><div class="acciones acciones-explorar"><button type="button" class="boton boton-principal oculto" id="descubrir-mas">Cargar más recetas ↓</button><button type="button" class="boton boton-secundario" id="actualizar-catalogo">↻ Actualizar catálogo</button></div></div>
+
+    <details class="guias-locales"><summary>📚 Ver 6 guías básicas sin conexión (sin fotografías)</summary><h3>Guías básicas para usar sin internet</h3><p class="texto-suave" style="margin-bottom:18px">Estas seis guías son adaptaciones didácticas. El catálogo de arriba incluye fotografías y recetas externas actualizables.</p><div class="rejilla-recetas" id="lista-recetas" aria-live="polite"></div>
+    <p id="sin-recetas" class="vacio-busqueda oculto">No encontramos una coincidencia confiable. Prueba con un ingrediente distinto o limpia los filtros.</p></details>
+  </section>
+
+  <section id="asistente" class="seccion-asistente" aria-labelledby="titulo-asistente">
+    <div class="titulo-seccion"><div><p class="subtitulo">APRENDE A VERIFICAR</p><h2 id="titulo-asistente">Pregúntale a Clara</h2><p class="texto-suave">Puedes consultar el catálogo local o conectar una IA real con una clave privada en el servidor.</p></div></div>
+    <div class="columnas">
+      <section class="tarjeta asistente">
+        <div class="cabecera-tarjeta"><div class="icono">🥣</div><div><h3>Tu ayudante de cocina</h3><p class="texto-suave"><span id="modo-asistente">Comprobando servicio de IA…</span></p></div></div>
+        <div class="aviso" role="note"><strong>Transparencia:</strong> siempre indicamos si responde una regla local o una IA. Una respuesta automática puede equivocarse o tener sesgos; verifica la fuente. Para alergias, intoxicaciones y seguridad alimentaria, consulta con una persona profesional.</div>
+        <div class="chat" aria-live="polite" aria-atomic="true">
+          <div class="estado" id="estado-vacio"><span class="emoji-grande">👩‍🍳</span><h3>¿Con qué te ayudo?</h3><p>Pregunta por un plato o elige una sugerencia:</p><div class="sugerencias"><button class="sugerencia" type="button" data-pregunta="¿Cómo preparo arroz?">¿Cómo preparo arroz?</button><button class="sugerencia" type="button" data-pregunta="¿Cómo hago pasta?">¿Cómo hago pasta?</button><button class="sugerencia" type="button" data-pregunta="¿Cómo preparo huevos?">¿Cómo preparo huevos?</button></div></div>
+          <div class="estado oculto" id="estado-cargando" role="status"><div class="cargando"><span></span><span></span><span></span></div><h3>Buscando en mis recetas…</h3><p>Un momento, por favor.</p></div>
+          <div class="estado oculto estado-resultado" id="estado-respuesta"><p class="pregunta-usuario" id="pregunta-visible"></p><div class="resultado"><h3 id="respuesta-tipo">🍽️ Respuesta de la guía local (no IA)</h3><p id="respuesta-texto"></p><p class="fuente">📖 Fuente: <a id="fuente-enlace" href="#recetas">Receta de Cocina Clara ↗</a></p><small id="respuesta-advertencia">No es una verdad absoluta. Consulta la fuente y contrasta los pasos.</small></div></div>
+          <div class="estado oculto estado-resultado" id="estado-error"><div class="resultado error"><h3 id="error-titulo">No pude responder</h3><p id="error-texto">Ha ocurrido un problema.</p><div class="acciones"><button type="button" class="boton boton-secundario" id="reintentar">↻ Reintentar</button><button type="button" class="boton boton-secundario ayuda-humana">Hablar con una persona</button></div><p class="fuente oculto" id="error-fuente">📚 Fuente revisada: <a href="#recetas">Catálogo local de recetas ↗</a></p></div></div>
+        </div>
+        <form id="formulario" class="formulario"><label for="pregunta">Tu pregunta</label><div class="fila-formulario"><input id="pregunta" maxlength="200" type="text" placeholder="Ej.: ¿Cómo preparo arroz?" autocomplete="off" required><button class="boton boton-principal" type="submit">Preguntar</button></div><p id="aviso-envio" class="nota-privacidad">Sin consentimiento de IA, solo se usa el catálogo local. No guardamos tus preguntas.</p></form>
+      </section>
+      <aside class="lateral">
+        <div class="conexion-minimal" title="Estado de internet" aria-live="polite"><span id="conexion-luz" class="conexion-luz"></span><span id="conexion-estado">Comprobando conexión…</span></div>
+        <section class="tarjeta contacto"><h3>👩‍🍳 Ayuda humana</h3><p>Para temas de salud, alergias o seguridad alimentaria, busca orientación de una persona capacitada.</p><button type="button" class="boton boton-secundario boton-ancho ayuda-humana">¿Cómo pedir ayuda?</button></section>
+      </aside>
+    </div>
+  </section>
+  <section id="privacidad" class="seccion-privacidad" aria-labelledby="privacidad-titulo">
+    <div class="titulo-seccion"><div><p class="subtitulo">DECISIONES INFORMADAS</p><h2 id="privacidad-titulo">Privacidad, consentimiento y confianza</h2><p class="texto-suave">Controla qué funciones comparten información. Las consultas locales no requieren cuenta ni consentimiento externo.</p></div></div>
+    <div class="rejilla-privacidad">
+      <article class="tarjeta"><h3>🔒 Tus datos, tus decisiones</h3>
+        <p>Las búsquedas locales funcionan sin cuenta. Si creas una cuenta solicitamos nombre, correo y contraseña para autenticarte. Opcionalmente puedes guardar gustos y alergias; las alergias son datos sensibles y requieren un consentimiento independiente. Tu contraseña se guarda como un hash, nunca en texto legible. No guardamos el historial de tus preguntas.</p>
+        <label class="consentimiento"><input type="checkbox" id="permiso-preferencias"><span><strong>Guardar preferencias en este navegador</strong><small>Solo tema claro/oscuro y recetas favoritas. Se guardan en localStorage, no se envían al servidor.</small></span></label>
+        <label class="consentimiento"><input type="checkbox" id="permiso-recetas"><span><strong>Autorizar búsquedas de recetas externas</strong><small>Al pulsar «Buscar recetas en internet», el texto buscado se envía a nuestro servidor y a TheMealDB.</small></span></label>
+        <label class="consentimiento"><input type="checkbox" id="permiso-ia"><span><strong>Autorizar consultas a un proveedor de IA</strong><small>Solo al preguntar: el texto se envía al servidor y, si está configurado, al proveedor de IA. No incluyas datos sensibles.</small></span></label>
+        <div class="acciones"><button type="button" class="boton boton-secundario" id="borrar-datos">Borrar preferencias</button><a class="boton boton-secundario enlace-boton" href="privacidad.html" target="_blank" rel="noopener">Leer términos y privacidad ↗</a></div>
+        <p id="privacidad-estado" class="texto-suave" role="status"></p>
+      </article>
+      <article class="tarjeta"><h3>⚖️ Sesgos y explicabilidad</h3><p>No suponemos que un plato sirve para todas las personas: las recetas pueden variar por país, presupuesto, cultura, religión, ingredientes o preferencias.</p><p>La IA solo debe explicar recetas recuperadas de una fuente identificable; la fuente aparece siempre en la respuesta. Si no existe un respaldo, debe decir «no sé».</p><p>Las respuestas automáticas pueden ser incompletas o incorrectas. Sobre alergias, intoxicaciones o seguridad alimentaria, consulta a un profesional de salud.</p><p><strong>Control humano:</strong> usa «Hablar con una persona» para ver las opciones de revisión.</p></article>
+    </div>
+  </section>
+  <footer class="pie">Cocina Clara · HTML, CSS y JavaScript básico · Recetas adaptadas con fuentes externas · API de recetas conectada · IA activable desde servidor</footer>
+</main>
+<dialog id="detalle-receta" aria-labelledby="detalle-titulo"><button type="button" class="cerrar-modal" id="cerrar-detalle" aria-label="Cerrar receta">✕</button><img id="detalle-imagen" src="" alt=""><div class="contenido-modal"><p class="subtitulo">RECETA PASO A PASO</p><h2 id="detalle-titulo"></h2><p id="detalle-resumen" class="texto-suave"></p><h3>Ingredientes</h3><ul id="detalle-ingredientes"></ul><h3>Preparación</h3><ol id="detalle-pasos"></ol><p class="fuente">📖 Fuente: <a id="detalle-fuente" href="#" target="_blank" rel="noopener noreferrer">Ver receta original ↗</a></p><p id="detalle-nota" class="texto-suave"></p></div></dialog>
+<dialog id="ventana-ayuda" aria-labelledby="titulo-modal"><h2 id="titulo-modal">Hablar con una persona</h2><p>En esta versión no hay servicio humano conectado. Puedes mostrar la pregunta, la receta y su fuente a un docente de cocina o a un profesional.</p><p class="texto-suave">En el futuro, este botón puede dirigir al canal de acompañamiento de tu institución.</p><form method="dialog"><button class="boton boton-principal">Entendido</button></form></dialog>
+<dialog id="dialogo-cuenta" aria-labelledby="titulo-cuenta" class="cuenta-dialogo"><button class="cerrar-modal" id="cerrar-cuenta" type="button" aria-label="Cerrar">✕</button><h2 id="titulo-cuenta">Tu espacio en Cocina Clara</h2><p class="texto-suave">Crear una cuenta es opcional. El buscador local funciona sin registrarse.</p><div id="cuenta-entrada"><div class="pestanas-cuenta"><button id="tab-registro" type="button" class="boton boton-principal">Crear cuenta</button><button id="tab-login" type="button" class="boton boton-secundario">Ingresar</button></div><form id="form-cuenta"><label id="label-nombre" for="nombre-cuenta">Nombre</label><input id="nombre-cuenta" autocomplete="name" maxlength="60" required><label for="correo-cuenta">Correo electrónico</label><input id="correo-cuenta" type="email" autocomplete="email" required><label for="clave-cuenta">Contraseña (mínimo 10 caracteres)</label><input id="clave-cuenta" type="password" autocomplete="new-password" minlength="10" required><label id="label-terminos" class="consentimiento"><input type="checkbox" id="acepta-terminos" required><span>He leído y acepto los <a href="privacidad.html" target="_blank" rel="noopener">términos y condiciones</a> y el uso de mi correo para iniciar sesión.</span></label><fieldset class="perfil-panel" id="perfil-registro"><legend>Tu cocina, tus gustos (opcional)</legend><p class="texto-suave">Elige lo que prefieres para ordenar recomendaciones. No se infiere tu identidad ni tu salud.</p><div class="grupo-chips" id="gustos-registro"></div><p><strong>Ingredientes que debes evitar por alergia (opcional)</strong></p><div class="grupo-chips" id="alergias-registro"></div><label class="consentimiento"><input type="checkbox" id="permiso-alergias-registro"><span>Autorizo expresamente guardar mis alergias en mi cuenta para filtrar recetas. Puedo borrarlas cuando quiera. No se envían a TheMealDB.</span></label><small>El filtro es orientativo y nunca certifica que un alimento sea seguro.</small></fieldset><button id="enviar-cuenta" class="boton boton-principal boton-ancho" type="submit">Crear cuenta</button></form></div><div id="cuenta-sesion" class="oculto"><p id="saludo-cuenta"></p><p class="texto-suave">Tu cuenta se guarda en SQLite. No almacenamos preguntas ni conversaciones.</p><fieldset class="perfil-panel"><legend>Actualizar gustos y alergias</legend><div class="grupo-chips" id="gustos-perfil"></div><p><strong>Alergias (opcional)</strong></p><div class="grupo-chips" id="alergias-perfil"></div><label class="consentimiento"><input type="checkbox" id="permiso-alergias-perfil"><span>Consiento guardar esta información sensible. Desmarcar y guardar elimina las alergias almacenadas.</span></label><button type="button" class="boton boton-principal" id="guardar-perfil">Guardar preferencias</button><p id="perfil-estado" role="status"></p></fieldset><button id="cerrar-sesion" type="button" class="boton boton-secundario">Cerrar sesión</button><button id="eliminar-cuenta" type="button" class="boton boton-secundario">Eliminar mi cuenta</button></div><p id="estado-cuenta" role="status" class="texto-suave"></p></dialog>
+</body>
+</html>

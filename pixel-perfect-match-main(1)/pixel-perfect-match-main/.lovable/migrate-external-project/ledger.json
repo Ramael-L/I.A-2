@@ -1,0 +1,6 @@
+[
+ {"capability":"code","source":"riwimate-app.zip","outcome":"migrate","status":"verified","next_action":"none"},
+ {"capability":"schema/records/auth","source":"none detected (front-end prototype, no backend)","outcome":"not applicable","status":"verified","next_action":"none"},
+ {"capability":"external providers/secrets/webhooks","source":"none detected","outcome":"not applicable","status":"verified","next_action":"none"},
+ {"capability":"verification","source":"vitest + browser check","outcome":"migrate","status":"verified","next_action":"none"}
+]
