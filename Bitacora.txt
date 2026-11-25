@@ -1,0 +1,97 @@
+# BITÁCORA — I.A 2
+**Célula:** Tatiana · Juan Tejada · Cristian Benítez · Ramael González
+**Proyecto de Ramael:** Cocina Clara
+**Propuesta grupal inicial:** RiwiMate
+**Fechas exactas de cada etapa:** pendientes de completar por el estudiante.
+
+> Esta primera entrada reconstruye el proceso a partir de las conversaciones de desarrollo y de los archivos del repositorio. Es una base editable: Ramael puede corregir el orden, añadir fechas, capturas, dificultades personales y aportes de cada integrante. No significa que cada funcionalidad haya sido comprobada en producción.
+
+## Entrada 1 — Lluvia de ideas y primer prototipo grupal
+
+El trabajo comenzó con una lluvia de ideas entre los integrantes de la célula para definir cómo aplicar los temas de inteligencia artificial responsable en una página web. La primera propuesta fue RiwiMate, un asistente académico pensado para estudiantes de RIWI, con una interfaz inspirada en aplicaciones de chat, información sobre actividades y espacios para consultar dudas.
+
+En el proyecto quedaron componentes de interfaz, estados de interacción y propuestas para comunicar errores, limitaciones y criterios éticos. El archivo original se desarrolló con herramientas como Lovable, React, TypeScript y Vite.
+
+Después de revisar el resultado, Tatiana y yo sentimos que la propuesta no reflejaba lo que queríamos desarrollar. Por eso decidimos trabajar en nuestras propias páginas, partiendo de intereses e ideas distintas. RiwiMate se conservó como registro de la etapa inicial; no es la misma aplicación que Cocina Clara ni corresponde a las modificaciones posteriores que probamos por separado.
+
+**Por completar:** fecha de la lluvia de ideas; aportes de cada integrante; qué aspectos concretos no nos convencieron; capturas del primer prototipo.
+
+## Entrada 2 — Idea de Cocina Clara y primera estructura
+
+Decidí desarrollar Cocina Clara, una página relacionada con recetas y preparación de alimentos. El objetivo inicial era construir un sitio comprensible, con recetas organizadas, instrucciones útiles y una interfaz clara. Partimos de una página que funcionaba principalmente con contenido local, HTML, CSS y JavaScript.
+
+A partir de esa base fui solicitando cambios para que la página no se quedara solo en un diseño visual: quería recetas consultables, una mejor navegación, información de origen y funcionalidades que realmente respondieran a las acciones del usuario.
+
+**Por completar:** fecha de la primera versión; boceto o captura; qué escribí por mi cuenta y qué implementé con apoyo de IA.
+
+## Entrada 3 — Recetas reales, fuentes e imágenes
+
+Una de mis correcciones principales fue que la página se veía vacía o tenía muy pocas recetas e imágenes. Pedí ampliar el catálogo y mostrar fotografías que correspondieran de verdad a cada preparación.
+
+Para conseguirlo incorporamos una consulta a la API pública TheMealDB. La página recupera datos reales de recetas: nombre, ingredientes, instrucciones, imágenes y enlaces de referencia. La búsqueda y la actualización del catálogo dependen de la respuesta del servicio externo y de que el usuario autorice la conexión.
+
+Comprendí que **consultar un catálogo en línea no es lo mismo que guardar cientos de recetas dentro del ZIP**. Si la API o la red fallan, las recetas remotas pueden no aparecer. Por eso se conservaron recetas y guías locales, y se añadieron mensajes que explican cuando faltan datos.
+
+**Por completar:** captura del catálogo antes y después; búsquedas de prueba; errores encontrados al cargar recetas.
+
+## Entrada 4 — Privacidad, consentimiento y principios de IA responsable
+
+Durante el desarrollo revisamos los principios éticos que debíamos aplicar: privacidad, consentimiento, transparencia, fuentes verificables, sesgos y reconocimiento de errores.
+
+Agregamos controles para que el usuario decida si permite consultar recetas externas, usar IA generativa y guardar ciertas preferencias. También distinguimos entre respuestas locales basadas en reglas y respuestas producidas por un modelo de IA. La interfaz incluye estados como carga, respuesta y error, en lugar de mostrar respuestas inventadas cuando no hay información.
+
+Otra corrección fue incluir advertencias cuando las preguntas tienen relación con alergias, intoxicaciones o seguridad alimentaria. La página no debe presentar sus filtros como garantía médica ni sustituir el criterio de una persona profesional.
+
+**Por completar:** ejemplo de un consentimiento; captura de un error; reflexión personal sobre sesgos y responsabilidad.
+
+## Entrada 5 — Servidor Node.js y conexión con servicios externos
+
+La aplicación dejó de depender únicamente de archivos abiertos en el navegador. Añadimos un servidor con Node.js, definido en `server.js`. Este servidor entrega la página, recibe solicitudes de la interfaz y se comunica con servicios externos mediante rutas como `/api/recipes`, `/api/catalog`, `/api/status` y `/api/ask`.
+
+Aprendí a ejecutar el servidor desde la terminal, dentro de la carpeta que contiene `package.json`, usando por ejemplo `PORT=3107 npm start`, y luego abrir `http://localhost:3107`. También encontramos situaciones en las que un puerto ya estaba ocupado. El servidor es **local**, no un sitio desplegado de forma pública en un hosting.
+
+Para utilizar el modelo generativo, el servidor admite una variable privada llamada `OPENAI_API_KEY` y consulta el servicio Responses de OpenAI. La presencia del código de integración **no significa que la IA esté activa por defecto**: necesita clave válida, conectividad y cuota disponible.
+
+**Por completar:** comandos usados; dificultades al ejecutar Node; captura del servidor funcionando.
+
+## Entrada 6 — Cuentas, preferencias y base de datos
+
+Después solicité que la página permitiera registrar usuarios y personalizar recomendaciones. Se agregó SQLite, una base de datos local en la que la aplicación puede guardar nombre, correo, un hash de la contraseña, sesiones y preferencias aceptadas por el usuario.
+
+Se implementaron rutas para registrarse, iniciar y cerrar sesión, editar el perfil y eliminar una cuenta. Las preferencias incluyen gustos alimentarios y, solamente con consentimiento adicional, categorías de alergias. El filtrado de recetas es orientativo: no puede garantizar ausencia de trazas o contaminación cruzada.
+
+También se agregaron pruebas automáticas para algunas funciones y rutas del servidor. Esto permitió separar la idea de que algo «se ve bien» de la necesidad de comprobar su funcionamiento.
+
+**Por completar:** prueba de registro; ejemplo de recomendaciones; errores que aparecieron y cómo los corregí.
+
+## Entrada 7 — Correcciones finales y entrega
+
+La última versión conservada en el repositorio es `CocinaClara_7_Personalizada_Recetas(1)`. Sus archivos incluyen la interfaz, el servidor, configuración de variables, pruebas y un README con instrucciones y limitaciones.
+
+Las correcciones más importantes fueron ampliar la consulta de recetas, trabajar con fotografías y fuentes reales, diferenciar IA generativa de respuestas locales, agregar controles de privacidad, habilitar cuentas y preferencias, e informar honestamente cuando un servicio no está disponible. Finalmente organicé los archivos en GitHub junto al prototipo grupal inicial para documentar la evolución de la actividad.
+
+**Por completar:** fecha de entrega; qué funcionó en la demostración; qué faltó probar; conclusión escrita con mis propias palabras.
+
+---
+
+## Registro para continuar — Entrada 8
+
+**Fecha:**
+
+**Tema del día:**
+
+**Objetivo:**
+
+**Qué hice:**
+
+**Tecnologías o conceptos nuevos:**
+
+**Problema encontrado:**
+
+**Cómo lo solucioné:**
+
+**Qué aprendí:**
+
+**Evidencia / commit:**
+
+**Próximo paso:**
