@@ -1,26 +1,43 @@
 # BITÁCORA — I.A 2
-**Célula:** Tatiana · Juan Tejada · Cristian Benítez · Ramael González
-**Proyecto de Ramael:** Cocina Clara
-**Propuesta grupal inicial:** RiwiMate
-**Fechas exactas de cada etapa:** pendientes de completar por el estudiante.
 
-> Esta primera entrada reconstruye el proceso a partir de las conversaciones de desarrollo y de los archivos del repositorio. Es una base editable: Ramael puede corregir el orden, añadir fechas, capturas, dificultades personales y aportes de cada integrante. No significa que cada funcionalidad haya sido comprobada en producción.
+**Célula:** Tatiana · Juan Tejada · Cristian Benítez · Ramael González  
+**Proyecto individual:** Cocina Clara  
+**Propuesta inicial del equipo:** «Pregúntale a tu TL de bolsillo» (RiwiMate)
 
-## Entrada 1 — Lluvia de ideas y primer prototipo grupal
+## Etapa 1 — Lluvia de ideas y primera página
 
-mi equipo de desarrollo planteo primero una lluvia de ideas para elegir una idea para iniciar con la actividad al final nos decidimos por una plataforma interactiva educativa y su nombre clave es preguntale a tu TL de bolsillo iniciamos una prueba
-una creamos dos verciones la primera en Lovable que es la que subi al GitHub y otra en chatgpt que no nos gusto la razon por la cual decidi probar con otra pagina es que sentia que no le podia agregar las herramientas de conectivida 
-que queria por eso empece con la etapa dos 
+Mi equipo de desarrollo comenzó con una lluvia de ideas para elegir una propuesta con la que pudiéramos iniciar la actividad. Al final nos decidimos por una plataforma educativa interactiva, cuyo nombre clave era **«Pregúntale a tu TL de bolsillo»**.
 
+Hicimos dos versiones de esta idea: la primera en **Lovable**, que fue la que subí a GitHub, y otra con **ChatGPT**, cuyo resultado no nos convenció. En mi caso, sentía que a esa página no podía agregarle las herramientas de conectividad que quería implementar. Por eso decidí probar con otra propuesta y comenzar la segunda etapa.
 
-Creacion de COCINA CLARA 
+## Etapa 2 — Creación de Cocina Clara
 
-como primer contexto no realize la actividad en lovable por que se me acabaron los tokens al retocar la primera pagina que teniamos en mente   
-por esto realize la actividad en chatgpt fueron 7 verciones y una mejor que la anterior la primera era en general muy parecido a una demo tecnica  
-todo estaba pero casi nada funcionaba o tenia rezon de ser esta vercion la cree la semana 1 de I.A 2 posteriormente en la semana 2 nos contextualizaron 
-mas y pude tener criterio sobre lo que cree anteriormente agregandole aun mas cosas importantes no pude esperar y le agrege tecnologias que hasta este momento 
-no conzco del todo pero debo admitir que fue una experiencia grata el conectar todas esas cosas a la pagina y cuando la desplege se aplicaron todas la funcionalidades que 
-pedi como por ejemplo el login te preguntaba tus preferecnias o si tenias alergias para recomendarte ciertas recetas que normalmente no recomendaria 
-despues las recetas son reales con fuentes reales y imagenes sacadas de google segun lo que le pedi por utlimo comple con todos los requisitos establecidos hasta ahora de la semana 2 
-cuando veamos la implementacion de las apis actualizare la bitacora con la nueva información por ultimo le pedi a la I.A que creeara un glosario de cosas que desconozco por ahora en mi 
-inicio en riwi 
+Para dar un poco de contexto, no hice esta nueva página en Lovable porque ya se me habían acabado los tokens mientras retocaba la primera propuesta del equipo. Por eso decidí continuar la actividad con ChatGPT y desarrollar **Cocina Clara**, una página de recetas.
+
+En total trabajé en **siete versiones**, intentando que cada una mejorara a la anterior. La primera, que hice durante la semana 1 de I.A 2, se parecía mucho a una demostración técnica: tenía varias secciones y funciones a la vista, pero sentía que muchas no funcionaban como esperaba o no tenían una razón clara para estar ahí.
+
+Después, en la semana 2, nos explicaron mejor los temas de inteligencia artificial y sus implicaciones. Eso me permitió tener más criterio para revisar lo que había creado y darme cuenta de qué cosas necesitaba mejorar. Empecé a pedir correcciones relacionadas con la privacidad, el consentimiento, las fuentes de información y el funcionamiento real de la página.
+
+Debo admitir que no quise esperar a conocer todas las tecnologías en clase y empecé a incorporar herramientas que todavía no entiendo por completo. Aun así, fue una experiencia grata ver cómo se conectaban distintas partes del proyecto y cómo la página empezaba a responder a lo que yo quería hacer.
+
+Una de las funciones que más me gustó fue el **inicio de sesión**, porque la página podía preguntar por las preferencias alimentarias del usuario y, si este lo autorizaba, por sus alergias. Con esa información se podían filtrar y recomendar recetas de una forma más personalizada. También insistí en que las recetas fueran reales, con instrucciones, fuentes verificables e imágenes que correspondieran a cada plato. Para eso terminamos utilizando **TheMealDB**, una API que permite consultar recetas e imágenes de un servicio externo.
+
+Otra parte importante fue aprender a ejecutar la página mediante un **servidor local**, en lugar de abrir solamente el archivo HTML. Esto hizo posible probar funciones relacionadas con las cuentas y la comunicación entre la página y otros servicios. Todavía necesito entender mejor cómo funciona esa conexión por dentro.
+
+Por último, fui revisando los requisitos de la semana 2 para aplicarlos al proyecto, especialmente los relacionados con una IA responsable. No considero que ya domine todas estas herramientas, pero sí que este ejercicio me ayudó a entender para qué pueden servir y me dejó muchas preguntas que quiero resolver mientras seguimos avanzando en RIWI.
+
+Cuando estudiemos con más detalle la implementación de las **API**, actualizaré esta bitácora con lo que aprenda y con ejemplos de mi propio proyecto. También le pedí a la IA que me ayudara a crear un **glosario** de tecnologías y conceptos que todavía desconozco, para poder estudiarlos poco a poco durante mi proceso de formación.
+
+---
+
+## Próxima entrada — Lo que aprendí sobre APIs
+
+**Fecha:** 
+
+**¿Qué vimos en clase?** 
+
+**¿Qué entendí sobre las API?** 
+
+**¿Cómo se conecta esto con Cocina Clara?** 
+
+**¿Qué dudas me quedan?** 
